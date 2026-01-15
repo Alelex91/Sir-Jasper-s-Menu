@@ -1,6 +1,7 @@
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { translations } from '@/data/translations';
+import { allergens, getImageForDish } from '@/data/allergens';
 
 export const MenuCategory = ({ categoryId, language, menuData }) => {
   const categoryData = menuData[categoryId];
