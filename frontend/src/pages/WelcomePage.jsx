@@ -59,11 +59,11 @@ export const WelcomePage = ({ setIsAuthenticated }) => {
       <div className="w-full max-w-md relative z-10 animate-fade-in">
         {/* Logo Section */}
         <div className="text-center mb-8">
-          <div className="inline-block mb-6">
+          <div className="inline-block mb-6 bg-background/80 backdrop-blur-sm rounded-lg p-4">
             <img 
               src="https://customer-assets.emergentagent.com/job_ab238b6c-034b-4ee8-ac68-d0eb5bebfe31/artifacts/oij2k9vq_Immagine%20WhatsApp%202025-08-07%20ore%2022.18.14_2d73ac49.jpg" 
               alt="Sir Jasper's Logo" 
-              className="h-32 w-auto mx-auto drop-shadow-[0_0_25px_rgba(218,165,32,0.3)]"
+              className="h-32 w-auto mx-auto"
             />
           </div>
           <h1 className="font-display text-4xl md:text-5xl font-bold text-foreground mb-2">
