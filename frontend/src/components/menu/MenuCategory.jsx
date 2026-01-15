@@ -33,6 +33,14 @@ export const MenuCategory = ({ categoryId, language, menuData }) => {
     return translations[language][titleMap[categoryId]] || categoryId;
   };
 
+  const getImageForDish = (dishName) => {
+    return dishImages[dishName] || dishImages['Margherita'];
+  };
+
+  const getAllergensForDish = (dishName) => {
+    return dishAllergens[dishName] || [];
+  };
+
   return (
     <div className="animate-fade-in">
       {/* Category Header */}
