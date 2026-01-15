@@ -9,7 +9,8 @@ export const menuData = {
         de: 'Käseplatte mit Konfitüren',
         zh: '精选奶酪拼盘配果酱'
       },
-      price: '13.00'
+      price: '13.00',
+      allergens: ['dairy', 'gluten']
     },
     {
       name: {
