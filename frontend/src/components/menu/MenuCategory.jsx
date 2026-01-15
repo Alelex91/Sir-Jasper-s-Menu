@@ -105,22 +105,25 @@ export const MenuCategory = ({ categoryId, language, menuData }) => {
                       </div>
                     </div>
                   </CardHeader>
-            {item.extras && item.extras.length > 0 && (
-              <CardContent className="pt-0">
-                <div className="border-t border-border/50 pt-3 space-y-1">
-                  {item.extras.map((extra, idx) => (
-                    <div key={idx} className="flex items-center justify-between text-sm">
-                      <span className="text-muted-foreground font-body">
-                        {extra.name[language] || extra.name.it}
-                      </span>
-                      <span className="text-accent font-body font-medium">+€{extra.price}</span>
-                    </div>
-                  ))}
+                  {item.extras && item.extras.length > 0 && (
+                    <CardContent className="pt-0">
+                      <div className="border-t border-border/50 pt-3 space-y-1">
+                        {item.extras.map((extra, idx) => (
+                          <div key={idx} className="flex items-center justify-between text-sm">
+                            <span className="text-muted-foreground font-body">
+                              {extra.name[language] || extra.name.it}
+                            </span>
+                            <span className="text-accent font-body font-medium">+€{extra.price}</span>
+                          </div>
+                        ))}
+                      </div>
+                    </CardContent>
+                  )}
                 </div>
-              </CardContent>
-            )}
-          </Card>
-        ))}
+              </div>
+            </Card>
+          );
+        })}
       </div>
     </div>
   );
