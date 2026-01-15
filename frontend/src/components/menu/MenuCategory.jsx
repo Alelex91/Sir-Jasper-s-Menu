@@ -45,33 +45,66 @@ export const MenuCategory = ({ categoryId, language, menuData }) => {
 
       {/* Menu Items Grid */}
       <div className="grid grid-cols-1 gap-4">
-        {categoryData.map((item, index) => (
-          <Card 
-            key={index} 
-            className="card-elegant backdrop-blur-sm bg-card/80 hover:scale-[1.01] transition-transform duration-300"
-          >
-            <CardHeader className="pb-3">
-              <div className="flex items-start justify-between gap-4">
+        {categoryData.map((item, index) => {
+          const dishImage = getImageForDish(item.name.it || item.name.en, categoryId);
+          
+          return (
+            <Card 
+              key={index} 
+              className="card-elegant backdrop-blur-sm bg-card/80 hover:scale-[1.01] transition-transform duration-300 overflow-hidden"
+            >
+              <div className="flex flex-col md:flex-row">
+                {/* Image Section */}
+                <div className="md:w-48 h-32 md:h-auto relative overflow-hidden">
+                  <img 
+                    src={dishImage} 
+                    alt={item.name[language] || item.name.it}
+                    className="w-full h-full object-cover transition-transform duration-300 hover:scale-105"
+                    loading="lazy"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
+                </div>
+                
+                {/* Content Section */}
                 <div className="flex-1">
-                  <CardTitle className="font-display text-xl text-foreground mb-1">
-                    {item.name[language] || item.name.it}
-                  </CardTitle>
-                  {item.description && (
-                    <CardDescription className="font-body text-sm text-muted-foreground mt-2 leading-relaxed">
-                      {item.description[language] || item.description.it}
-                    </CardDescription>
-                  )}
-                </div>
-                <div className="flex flex-col items-end gap-2">
-                  <Badge className="bg-gradient-to-r from-[hsl(38_85%_45%)] to-[hsl(43_96%_56%)] text-primary font-body font-semibold text-base px-3 py-1 shadow-gold border-0">
-                    €{item.price}
-                  </Badge>
-                  {item.size && (
-                    <span className="text-xs text-muted-foreground font-body">{item.size}</span>
-                  )}
-                </div>
-              </div>
-            </CardHeader>
+                  <CardHeader className="pb-3">
+                    <div className="flex items-start justify-between gap-4">
+                      <div className="flex-1">
+                        <CardTitle className="font-display text-xl text-foreground mb-1">
+                          {item.name[language] || item.name.it}
+                        </CardTitle>
+                        {item.description && (
+                          <CardDescription className="font-body text-sm text-muted-foreground mt-2 leading-relaxed">
+                            {item.description[language] || item.description.it}
+                          </CardDescription>
+                        )}
+                        
+                        {/* Allergens Display */}
+                        {item.allergens && item.allergens.length > 0 && (
+                          <div className="flex flex-wrap gap-1 mt-3">
+                            {item.allergens.map((allergen, idx) => (
+                              <span 
+                                key={idx}
+                                className="inline-flex items-center gap-1 px-2 py-1 bg-orange-100 dark:bg-orange-900/30 text-orange-800 dark:text-orange-200 text-xs rounded-full font-body"
+                                title={allergens[allergen]?.[language] || allergens[allergen]?.it || allergen}
+                              >
+                                <span>{allergens[allergen]?.icon || '⚠️'}</span>
+                                <span>{allergens[allergen]?.[language] || allergens[allergen]?.it || allergen}</span>
+                              </span>
+                            ))}
+                          </div>
+                        )}
+                      </div>
+                      <div className="flex flex-col items-end gap-2">
+                        <Badge className="bg-gradient-to-r from-[hsl(38_85%_45%)] to-[hsl(43_96%_56%)] text-primary font-body font-semibold text-base px-3 py-1 shadow-gold border-0">
+                          €{item.price}
+                        </Badge>
+                        {item.size && (
+                          <span className="text-xs text-muted-foreground font-body">{item.size}</span>
+                        )}
+                      </div>
+                    </div>
+                  </CardHeader>
             {item.extras && item.extras.length > 0 && (
               <CardContent className="pt-0">
                 <div className="border-t border-border/50 pt-3 space-y-1">
