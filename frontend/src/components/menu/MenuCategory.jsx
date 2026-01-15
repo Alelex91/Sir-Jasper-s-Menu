@@ -54,7 +54,9 @@ export const MenuCategory = ({ categoryId, language, menuData }) => {
       {/* Menu Items Grid */}
       <div className="grid grid-cols-1 gap-4">
         {categoryData.map((item, index) => {
-          const dishImage = getImageForDish(item.name.it || item.name.en, categoryId);
+          const dishName = item.name.it;
+          const imageUrl = getImageForDish(dishName);
+          const allergens = getAllergensForDish(dishName);
           
           return (
             <Card 
@@ -62,18 +64,17 @@ export const MenuCategory = ({ categoryId, language, menuData }) => {
               className="card-elegant backdrop-blur-sm bg-card/80 hover:scale-[1.01] transition-transform duration-300 overflow-hidden"
             >
               <div className="flex flex-col md:flex-row">
-                {/* Image Section */}
-                <div className="md:w-48 h-32 md:h-auto relative overflow-hidden">
+                {/* Dish Image */}
+                <div className="md:w-48 md:h-48 h-40 flex-shrink-0 overflow-hidden">
                   <img 
-                    src={dishImage} 
-                    alt={item.name[language] || item.name.it}
-                    className="w-full h-full object-cover transition-transform duration-300 hover:scale-105"
+                    src={imageUrl} 
+                    alt={dishName}
+                    className="w-full h-full object-cover"
                     loading="lazy"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
                 </div>
                 
-                {/* Content Section */}
+                {/* Content */}
                 <div className="flex-1">
                   <CardHeader className="pb-3">
                     <div className="flex items-start justify-between gap-4">
@@ -87,24 +88,24 @@ export const MenuCategory = ({ categoryId, language, menuData }) => {
                           </CardDescription>
                         )}
                         
-                        {/* Allergens Display */}
-                        {item.allergens && item.allergens.length > 0 && (
+                        {/* Allergens */}
+                        {allergens.length > 0 && (
                           <div className="flex flex-wrap gap-1 mt-3">
-                            {item.allergens.map((allergen, idx) => (
-                              <span 
+                            {allergens.map((allergen, idx) => (
+                              <span
                                 key={idx}
-                                className="inline-flex items-center gap-1 px-2 py-1 bg-orange-100 dark:bg-orange-900/30 text-orange-800 dark:text-orange-200 text-xs rounded-full font-body"
-                                title={allergens[allergen]?.[language] || allergens[allergen]?.it || allergen}
+                                className="inline-flex items-center gap-1 text-xs px-2 py-1 rounded-full bg-muted/50 text-muted-foreground border border-border/50"
+                                title={allergenLabels[allergen][language]}
                               >
-                                <span>{allergens[allergen]?.icon || '⚠️'}</span>
-                                <span>{allergens[allergen]?.[language] || allergens[allergen]?.it || allergen}</span>
+                                <span>{allergenLabels[allergen].icon}</span>
+                                <span>{allergenLabels[allergen][language]}</span>
                               </span>
                             ))}
                           </div>
                         )}
                       </div>
                       <div className="flex flex-col items-end gap-2">
-                        <Badge className="bg-gradient-to-r from-[hsl(38_85%_45%)] to-[hsl(43_96%_56%)] text-primary font-body font-semibold text-base px-3 py-1 shadow-gold border-0">
+                        <Badge className="bg-gradient-to-r from-[hsl(38_85%_45%)] to-[hsl(43_96%_56%)] text-primary font-body font-semibold text-base px-3 py-1 shadow-gold border-0 whitespace-nowrap">
                           €{item.price}
                         </Badge>
                         {item.size && (
