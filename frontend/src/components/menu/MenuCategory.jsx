@@ -14,23 +14,12 @@ export const MenuCategory = ({ categoryId, language, menuData }) => {
     );
   }
 
-  const getCategoryTitle = () => {
-    const titleMap = {
-      'antipasti-terra': 'antipastiTerra',
-      'antipasti-mare': 'antipastiMare',
-      'primi-terra': 'primiTerra',
-      'primi-mare': 'primiMare',
-      'pizze-classiche': 'pizzeClassiche',
-      'pizze-speciali': 'pizzeSpeciali',
-      'novita': 'novita',
-      'insalate': 'insalate',
-      'contorni': 'contorni',
-      'bevande': 'bevande',
-      'vini': 'vini',
-      'birre': 'birre',
-      'cocktails': 'cocktails'
-    };
-    return translations[language][titleMap[categoryId]] || categoryId;
+  const getImageForDish = (dishName) => {
+    return dishImages[dishName] || dishImages['Margherita'];
+  };
+
+  const getAllergensForDish = (dishName) => {
+    return dishAllergens[dishName] || [];
   };
 
   return (
