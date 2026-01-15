@@ -8,11 +8,13 @@ export const MenuHeader = ({ currentUser, language, onLogout }) => {
         <div className="flex items-center justify-between">
           {/* Logo & Title */}
           <div className="flex items-center gap-4">
-            <img 
-              src="https://customer-assets.emergentagent.com/job_ab238b6c-034b-4ee8-ac68-d0eb5bebfe31/artifacts/oij2k9vq_Immagine%20WhatsApp%202025-08-07%20ore%2022.18.14_2d73ac49.jpg" 
-              alt="Sir Jasper's Logo" 
-              className="h-14 w-auto drop-shadow-[0_0_15px_rgba(218,165,32,0.2)]" 
-            />
+            <div className="bg-background/80 backdrop-blur-sm rounded-lg p-2">
+              <img 
+                src="https://customer-assets.emergentagent.com/job_ab238b6c-034b-4ee8-ac68-d0eb5bebfe31/artifacts/oij2k9vq_Immagine%20WhatsApp%202025-08-07%20ore%2022.18.14_2d73ac49.jpg" 
+                alt="Sir Jasper's Logo" 
+                className="h-14 w-auto" 
+              />
+            </div>
             <div>
               <h1 className="font-display text-2xl font-bold text-foreground">Sir Jasper's</h1>
               <p className="text-xs text-muted-foreground font-elegant italic">Ristorante Pizzeria</p>
