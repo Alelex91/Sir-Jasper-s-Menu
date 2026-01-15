@@ -21,7 +21,8 @@ export const menuData = {
         de: 'Parmaschinken mit Melone',
         zh: '帕尔玛火腿配哈密瓜'
       },
-      price: '10.00'
+      price: '10.00',
+      allergens: ['pork']
     },
     {
       name: {
