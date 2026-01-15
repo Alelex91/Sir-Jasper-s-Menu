@@ -27,9 +27,9 @@ code {
         --popover: 0 0% 12%;
         --popover-foreground: 0 0% 98%;
         
-        /* Primary - Rich Black */
-        --primary: 0 0% 8%;
-        --primary-foreground: 0 0% 98%;
+        /* Primary - Luxury Gold */
+        --primary: 43 96% 56%;
+        --primary-foreground: 0 0% 8%;
         
         /* Secondary - Champagne Gold */
         --secondary: 45 60% 65%;
@@ -45,16 +45,16 @@ code {
         --gold-dark: 38 85% 45%;
         
         /* Muted */
-        --muted: 0 0% 96%;
-        --muted-foreground: 0 0% 45%;
+        --muted: 0 0% 20%;
+        --muted-foreground: 0 0% 65%;
         
         /* Destructive */
         --destructive: 0 84% 60%;
         --destructive-foreground: 0 0% 98%;
         
         /* Border & Input */
-        --border: 0 0% 90%;
-        --input: 0 0% 90%;
+        --border: 0 0% 25%;
+        --input: 0 0% 25%;
         --ring: 43 96% 56%;
         
         /* Radius */
